@@ -42,4 +42,28 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - SpinnerView
+
+
+-(void)addSpinnerViewOnScreen:(BOOL)removeOrAddSpinner{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (removeOrAddSpinner) {
+            if (!spinnerView) {
+                spinnerView  = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+                [self.window addSubview:spinnerView];
+                spinnerView.center = self.window.center;
+                spinnerView.color = [UIColor greenColor];
+            }
+            self.window.userInteractionEnabled = NO;
+            [spinnerView startAnimating];
+            [spinnerView setHidden:NO];
+            
+        }else{
+            self.window.userInteractionEnabled = YES;
+            [spinnerView stopAnimating];
+            [spinnerView setHidden:YES];
+        }
+    });
+}
+
 @end

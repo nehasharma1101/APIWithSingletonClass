@@ -10,7 +10,13 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+{
+    UIActivityIndicatorView *spinnerView;
+}
+
 @property (strong, nonatomic) UIWindow *window;
+
+-(void)addSpinnerViewOnScreen:(BOOL)removeOrAddSpinner;
 
 
 @end
